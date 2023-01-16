@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shooting game</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="top-bar"> 
+        <div class="timer">
+            <p id="timer">Time</p>
+        </div>
+        <div class="score">
+            <p id="score">Score</p>
+        </div>    
+    </div>
+
+    <div class="start-screen">
+        <p>PRESS TO START</p>
+    </div>
+
+    <div class="end-screen hide">
+        <div class="stats-box">
+            <p id="stats-score">Score: 0</p>
+            <p id="targets-shot">Targets shot: 0</p>
+            <p id="shots-per-second">Shots per second: 0</p>
+            <p id="avg-score-per-target">Avg score per Target: 0</p>
+            <p>PRESS TO RESTART</p>
+        </div>
+    </div>
+
+    <div class="game-window">
+    <!-- Targets spawn here -->
+    </div>
+    <script src="app.js" type="module"></script>
+</body>
+</html>
