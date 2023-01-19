@@ -8,7 +8,7 @@ const menu = document.getElementsByClassName('menu')[0]
 // game settings
 let targetAmount = 5;
 let totalScore = 0;
-const gameDuration = 3;
+const gameDuration = 30;
 let countDown = gameDuration;
 let shots = 0;
 let isRunning = false;
