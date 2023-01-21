@@ -24,7 +24,6 @@ startScreen.addEventListener('click', () => {
 
 // starts game and spawns entry targets
 function start() {
-    // document.getElementById('score').innerHTML = 0
     if (!isRunning) {
         isRunning = true;
         for (let i = 0; i < targetAmount; i++){
