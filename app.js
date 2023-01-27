@@ -66,8 +66,9 @@ function spawnTarget() {
     const targetY = randomPosition(windowHeight - elementSize) + navbarHeight
     element.style.left = `${targetX}px`
     element.style.top = `${targetY}px`
-    element.onclick = (click) => 
+    element.addEventListener('mousedown', (click) => {
         shot(click, element, targetX, targetY, elementSize)   
+    })   
     gameWindow.appendChild(element) 
 }
 
