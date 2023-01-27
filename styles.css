@@ -69,6 +69,7 @@ body {
     width: 19vh;
     height: 19vh;
     cursor: crosshair;
+    z-index: 10;
 }
 
 
