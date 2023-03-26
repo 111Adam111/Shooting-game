@@ -6,6 +6,7 @@ At the start of the game, 5 targets are displayed at random locations. The playe
 
 ### Technology:
 #### Javascript
+#### HTML/CSS
 #### Firebase (deployment)
 #### Parcel (deployment)
 
