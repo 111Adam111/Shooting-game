@@ -13,6 +13,7 @@ let countDown = gameDuration;
 let shots = 0;
 let isRunning = false;
 let canRestart = false;
+const maxPointsPerShot = 100;
 
 
 // Click to start
@@ -37,7 +38,7 @@ function start() {
 // Counts time left and ends the game
 const gameEnder = setInterval(() => {
     if (isRunning && countDown > 0) {
-        countDown -= 0.1;
+        countDown -= 0.1; // 100 milliseconds or 0.1 second
         document.getElementById('timer').innerHTML 
             = `Time: ${Math.abs(Math.round(countDown * 10) / 10).toFixed(1)}`;    
     }
@@ -49,7 +50,7 @@ const gameEnder = setInterval(() => {
         shots = 0
         canRestartTimer()
     }
-}, 100);
+}, 100); // 100 milliseconds or 0.1 second
 
 
 // spawns target at random location within game window
@@ -81,8 +82,7 @@ function shot(click, element, targetX, targetY, elementSize) {
     const targetCenterY = targetY + radius;
     const distance = Math.sqrt((click.x - targetCenterX)**2 
                             + (click.y - targetCenterY)**2);
-    let score = 100 - Math.floor(distance * 100 / radius)
-    // let precisionModeScore = Math.floor(score**2 / 100)
+    let score = maxPointsPerShot - Math.floor(distance * maxPointsPerShot / radius)
     // action - updates score, removes target, spawns new target
     // and shows score for shot
     if (score > 0) {
@@ -99,22 +99,24 @@ function shot(click, element, targetX, targetY, elementSize) {
 let hitValuePop = (value, click) => {
     const element = document.createElement('p')
     element.classList.add('slide-out-top')
+    const pointsThreshold = 90;
     let msg = value  
-    if (value >= 90 && value !== 100) {
+    if (value >= pointsThreshold && value !== maxPointsPerShot) {
         msg = value + '!'
     }
-    else if (value == 100) {
+    else if (value == maxPointsPerShot) {
         msg = 'Perfect Shot!'
     }
     element.innerHTML = `${msg}`
-    element.style.left = `${value == 100 ? click.x - 50 : click.x -10}px`
+    element.style.left = `${value == maxPointsPerShot ? click.x - 50 : click.x -10}px`
     element.style.top = `${click.y -40}px`
     gameWindow.appendChild(element)
 
     // pop up dispaears after 0.4 secounds
+    const popupTime = 400;
     setTimeout(() => {
         gameWindow.hasChildNodes() && gameWindow.removeChild(element)
-    }, 400)
+    }, popupTime)
 }
 
 
@@ -153,7 +155,8 @@ endScreen.addEventListener('click', () => {
 
 // 1 sec restart delayer to prevent unwanted early restart
 function canRestartTimer() {
+    const resetTime = 1000; // milliseconds
     setTimeout(() => {
         canRestart = !canRestart;
-      }, 1000);
+      }, resetTime);
 }
