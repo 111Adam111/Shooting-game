@@ -4,7 +4,7 @@
 
 @font-face {
   font-family: customFont;
-  src: url(SanAndreas.otf);
+  src: url(public/SanAndreas.otf);
 }
 
 body {
@@ -54,7 +54,7 @@ body {
     align-items: center;
     justify-content: center;
     padding: 0 .5rem;
-    background-image: url(background.svg);
+    background-image: url(public/background.svg);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
