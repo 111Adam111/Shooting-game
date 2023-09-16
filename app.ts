@@ -47,7 +47,7 @@ const gameEnder = setInterval((): void => {
     if (isRunning && countDown > 0) {
         countDown -= 0.1; // 100 milliseconds
         timerEl.innerHTML 
-            = `Time: ${Math.abs(Math.round(countDown * 10) / 10).toFixed(1)}`;    
+        = `Time: ${Math.abs(Math.round(countDown * 10) / 10).toFixed(1)}`;    
     }
     if (countDown <= 0) {
         isRunning = false
@@ -68,10 +68,12 @@ function spawnTarget(): void {
     const randomPosition = (max: number): number => Math.random() * max
     const windowWidth = gameWindowEl.clientWidth
     const windowHeight = gameWindowEl.clientHeight
-    const elementSize = windowHeight / 5 // 19vh
+    const elementSize = (windowHeight + windowWidth) / 10
     const navbarHeight = windowHeight / 19 // 5vh
     const targetX = randomPosition(windowWidth - elementSize)
     const targetY = randomPosition(windowHeight - elementSize) + navbarHeight
+    element.style.width = `${elementSize}px`
+    element.style.height = `${elementSize}px`
     element.style.left = `${targetX}px`
     element.style.top = `${targetY}px`
     element.addEventListener('mousedown', (click: MouseEvent) => {

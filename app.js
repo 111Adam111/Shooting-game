@@ -36,7 +36,7 @@ function start() {
 // Counts time left and ends the game
 var gameEnder = setInterval(function () {
     if (isRunning && countDown > 0) {
-        countDown -= 0.1; // 100 milliseconds or 0.1 second
+        countDown -= 0.1; // 100 milliseconds
         timerEl.innerHTML
             = "Time: ".concat(Math.abs(Math.round(countDown * 10) / 10).toFixed(1));
     }
@@ -48,7 +48,7 @@ var gameEnder = setInterval(function () {
         shots = 0;
         canRestartTimer();
     }
-}, 100); // 100 milliseconds or 0.1 second
+}, 100); // 100 milliseconds
 // spawns target at random location within game window
 function spawnTarget() {
     var element = document.createElement('div');
@@ -57,10 +57,13 @@ function spawnTarget() {
     var randomPosition = function (max) { return Math.random() * max; };
     var windowWidth = gameWindowEl.clientWidth;
     var windowHeight = gameWindowEl.clientHeight;
-    var elementSize = windowHeight / 5; // 19vh
+    var elementSize = (windowHeight + windowWidth) / 10;
+    // const elementSize = windowHeight * windowWidth / 7500
     var navbarHeight = windowHeight / 19; // 5vh
     var targetX = randomPosition(windowWidth - elementSize);
     var targetY = randomPosition(windowHeight - elementSize) + navbarHeight;
+    element.style.width = "".concat(elementSize, "px");
+    element.style.height = "".concat(elementSize, "px");
     element.style.left = "".concat(targetX, "px");
     element.style.top = "".concat(targetY, "px");
     element.addEventListener('mousedown', function (click) {
