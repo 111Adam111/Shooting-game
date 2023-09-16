@@ -66,12 +66,12 @@ function spawnTarget(): void {
     element.classList.add('target')
     element.innerHTML = `<img src="public/target.png" alt="">`
     const randomPosition = (max: number): number => Math.random() * max
-    const windowWidth = gameWindowEl.clientWidth
-    const windowHeight = gameWindowEl.clientHeight
-    const elementSize = (windowHeight + windowWidth) / 10
-    const navbarHeight = windowHeight / 19 // 5vh
-    const targetX = randomPosition(windowWidth - elementSize)
-    const targetY = randomPosition(windowHeight - elementSize) + navbarHeight
+    const windowWidth: number = gameWindowEl.clientWidth
+    const windowHeight: number = gameWindowEl.clientHeight
+    const elementSize: number = (windowHeight + windowWidth) / 10
+    const navbarHeight: number = windowHeight / 19 // 5vh
+    const targetX: number = randomPosition(windowWidth - elementSize)
+    const targetY: number = randomPosition(windowHeight - elementSize) + navbarHeight
     element.style.width = `${elementSize}px`
     element.style.height = `${elementSize}px`
     element.style.left = `${targetX}px`
@@ -93,10 +93,10 @@ interface Shot {
 //  target click and score per shot calculation
 function shot({click, element, targetX, targetY, elementSize}: Shot): void {
     // calculation
-    const radius = elementSize / 2
-    const targetCenterX = targetX + radius;
-    const targetCenterY = targetY + radius;
-    const distance = Math.sqrt((click.x - targetCenterX)**2 
+    const radius: number = elementSize / 2
+    const targetCenterX: number = targetX + radius;
+    const targetCenterY: number = targetY + radius;
+    const distance: number = Math.sqrt((click.x - targetCenterX)**2 
                             + (click.y - targetCenterY)**2);
     let score: number = maxPointsPerShot - Math.floor(distance * maxPointsPerShot / radius)
     // action - updates score, removes target, spawns new target
@@ -129,7 +129,7 @@ let hitValuePop = (value: number, click: MouseEvent): void => {
     gameWindowEl.appendChild(element)
 
     // pop up dispaears after 0.4 secounds
-    const popupTime = 400;
+    const popupTime: number = 400;
     setTimeout(() => {
         gameWindowEl.hasChildNodes() && gameWindowEl.removeChild(element)
     }, popupTime)
