@@ -1,14 +1,14 @@
 // HTML elements
-var gameWindowEl = document.getElementsByClassName('game-window')[0];
-var startScreenEl = document.getElementsByClassName('start-screen')[0];
-var endScreenEL = document.getElementsByClassName('end-screen')[0];
-var menuEl = document.getElementsByClassName('menu')[0];
-var timerEl = document.getElementById('timer');
-var scoreEl = document.getElementById('score');
-var statsSCoreEL = document.getElementById('stats-score');
-var targetsShotEL = document.getElementById('targets-shot');
-var shotsPerSecondEL = document.getElementById('shots-per-second');
-var avgScorePerTargetEl = document.getElementById('avg-score-per-target');
+var gameWindowEl = document.getElementsByClassName("game-window")[0];
+var startScreenEl = document.getElementsByClassName("start-screen")[0];
+var endScreenEL = document.getElementsByClassName("end-screen")[0];
+var menuEl = document.getElementsByClassName("menu")[0];
+var timerEl = document.getElementById("timer");
+var scoreEl = document.getElementById("score");
+var statsSCoreEL = document.getElementById("stats-score");
+var targetsShotEL = document.getElementById("targets-shot");
+var shotsPerSecondEL = document.getElementById("shots-per-second");
+var avgScorePerTargetEl = document.getElementById("avg-score-per-target");
 // game settings
 var targetAmount = 5;
 var totalScore = 0;
@@ -19,9 +19,9 @@ var isRunning = false;
 var canRestart = false;
 var maxPointsPerShot = 100;
 // Click to start
-startScreenEl.addEventListener('click', function () {
+startScreenEl.addEventListener("click", function () {
     start();
-    startScreenEl.classList.add('hide');
+    startScreenEl.classList.add("hide");
 });
 // starts game and spawns entry targets
 function start() {
@@ -37,13 +37,12 @@ function start() {
 var gameEnder = setInterval(function () {
     if (isRunning && countDown > 0) {
         countDown -= 0.1; // 100 milliseconds
-        timerEl.innerHTML
-            = "Time: ".concat(Math.abs(Math.round(countDown * 10) / 10).toFixed(1));
+        timerEl.innerHTML = "Time: ".concat(Math.abs(Math.round(countDown * 10) / 10).toFixed(1));
     }
     if (countDown <= 0) {
         isRunning = false;
-        gameWindowEl.innerHTML = '';
-        endScreenEL.classList.remove('hide');
+        gameWindowEl.innerHTML = "";
+        endScreenEL.classList.remove("hide");
         totalScore = 0;
         shots = 0;
         canRestartTimer();
@@ -51,14 +50,13 @@ var gameEnder = setInterval(function () {
 }, 100); // 100 milliseconds
 // spawns target at random location within game window
 function spawnTarget() {
-    var element = document.createElement('div');
-    element.classList.add('target');
-    element.innerHTML = "<img src=\"public/target.png\" alt=\"\">";
+    var element = document.createElement("div");
+    element.classList.add("target");
+    element.innerHTML = "<img src=\"../public/target.png\" alt=\"target\">";
     var randomPosition = function (max) { return Math.random() * max; };
     var windowWidth = gameWindowEl.clientWidth;
     var windowHeight = gameWindowEl.clientHeight;
     var elementSize = (windowHeight + windowWidth) / 10;
-    // const elementSize = windowHeight * windowWidth / 7500
     var navbarHeight = windowHeight / 19; // 5vh
     var targetX = randomPosition(windowWidth - elementSize);
     var targetY = randomPosition(windowHeight - elementSize) + navbarHeight;
@@ -66,7 +64,7 @@ function spawnTarget() {
     element.style.height = "".concat(elementSize, "px");
     element.style.left = "".concat(targetX, "px");
     element.style.top = "".concat(targetY, "px");
-    element.addEventListener('mousedown', function (click) {
+    element.addEventListener("mousedown", function (click) {
         shot({ click: click, element: element, targetX: targetX, targetY: targetY, elementSize: elementSize });
     });
     gameWindowEl.appendChild(element);
@@ -78,9 +76,8 @@ function shot(_a) {
     var radius = elementSize / 2;
     var targetCenterX = targetX + radius;
     var targetCenterY = targetY + radius;
-    var distance = Math.sqrt(Math.pow((click.x - targetCenterX), 2)
-        + Math.pow((click.y - targetCenterY), 2));
-    var score = maxPointsPerShot - Math.floor(distance * maxPointsPerShot / radius);
+    var distance = Math.sqrt(Math.pow((click.x - targetCenterX), 2) + Math.pow((click.y - targetCenterY), 2));
+    var score = maxPointsPerShot - Math.floor((distance * maxPointsPerShot) / radius);
     // action - updates score, removes target, spawns new target
     // and shows score for shot
     if (score > 0) {
@@ -92,15 +89,15 @@ function shot(_a) {
 }
 // pop up containing score for every shot
 var hitValuePop = function (value, click) {
-    var element = document.createElement('p');
-    element.classList.add('slide-out-top');
+    var element = document.createElement("p");
+    element.classList.add("slide-out-top");
     var pointsThreshold = 90;
     var msg = value;
     if (value >= pointsThreshold && value !== maxPointsPerShot) {
-        msg = value + '!';
+        msg = value + "!";
     }
     else if (value == maxPointsPerShot) {
-        msg = 'Perfect Shot!';
+        msg = "Perfect Shot!";
     }
     element.innerHTML = "".concat(msg);
     element.style.left = "".concat(value == maxPointsPerShot ? click.x - 50 : click.x - 10, "px");
@@ -125,17 +122,15 @@ var stats = function (totalScore) {
     var avg = totalScore / shots;
     statsSCoreEL.innerHTML = "Score: ".concat(totalScore);
     targetsShotEL.innerHTML = "Targets shot: ".concat(shots);
-    shotsPerSecondEL.innerHTML =
-        "Shots per second ".concat(shotsPS.toFixed(2));
-    avgScorePerTargetEl.innerHTML =
-        "Avg score per target: ".concat(avg.toFixed(2));
+    shotsPerSecondEL.innerHTML = "Shots per second ".concat(shotsPS.toFixed(2));
+    avgScorePerTargetEl.innerHTML = "Avg score per target: ".concat(avg.toFixed(2));
 };
 // Click to restart
-endScreenEL.addEventListener('click', function () {
+endScreenEL.addEventListener("click", function () {
     if (canRestart) {
         start();
-        scoreEl.innerHTML = 'Score';
-        endScreenEL.classList.add('hide');
+        scoreEl.innerHTML = "Score";
+        endScreenEL.classList.add("hide");
         canRestartTimer();
     }
 });
