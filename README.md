@@ -22,4 +22,3 @@ At the start of the game, 5 targets are displayed at random locations. The playe
 ![shootingGame2](https://user-images.githubusercontent.com/70273104/227781082-01300478-1632-4a66-aa1c-98f15715d4ec.png)
 ![shootingGame3](https://user-images.githubusercontent.com/70273104/227780413-068f6548-cb72-419c-a31c-1c2310bb3dc9.png)
 ![shootingGame4](https://user-images.githubusercontent.com/70273104/227780415-6cac958b-7771-4401-adb0-94e2f1b1988f.jpg)
-
