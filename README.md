@@ -13,6 +13,8 @@ At the start of the game, 5 targets are displayed at random locations. The playe
 - Firebase
 - Parcel
 
+### Update: 29.09.23 backend (Node, Express and MongoDB) added for highscores
+
 ### Screenshots
 
 ![shootingGame1](https://user-images.githubusercontent.com/70273104/227780030-078bbc96-d098-436f-8a28-2c5c74530157.jpg)
