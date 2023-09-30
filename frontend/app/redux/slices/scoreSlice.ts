@@ -1,11 +1,9 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { ScoreState } from "../types";
 
-interface ScoreState {
-  count: number;
-}
 
 const initialState: ScoreState = {
-  count: 0,
+  score: 0,
 };
 
 export const scoreSlice = createSlice({
@@ -13,10 +11,10 @@ export const scoreSlice = createSlice({
   initialState,
   reducers: {
     increment: (state, action: PayloadAction<number>) => {
-      state.count += action.payload;
+      state.score += action.payload;
     },
     reset: (state) => {
-      state.count = 0;
+      state.score = 0;
     },
   },
 });

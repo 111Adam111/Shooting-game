@@ -26,8 +26,10 @@ const Target = ({ x, y, size }: TargetProps) => {
     );
     let score: number =
       maxPointsPerShot - Math.floor((distance * maxPointsPerShot) / radius);
-    dispatch(increment(score));
-    dispatch(remove({x, y, size}));
+    if (score > 0) {
+      dispatch(increment(score));
+      dispatch(remove({ x, y, size }));
+    }
   };
 
   return (

@@ -1,9 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { TargetProps } from "../../game/target/Target";
-
-interface TargetsState {
-  targets: TargetProps[];
-}
+import { TargetsState } from "../types";
 
 const initialState: TargetsState = {
   targets: [],
