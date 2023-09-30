@@ -1,7 +1,9 @@
 import React from "react";
 import { maxPointsPerShot } from "../gameSettings";
+import { useDispatch } from "react-redux";
+import { increment } from "../../redux/scoreSlice";
 
-interface shotProps extends TargetProps {
+interface ShotProps extends TargetProps {
   click: React.MouseEvent<HTMLElement>;
 }
 
@@ -11,18 +13,21 @@ type TargetProps = {
   size: number;
 };
 
-const shot = ({ click, x, y, size }: shotProps) => {
-  const radius: number = size / 2;
-  const targetCenterX: number = x + radius;
-  const targetCenterY: number = y + radius;
-  const distance: number = Math.sqrt(
-    (click.clientX - targetCenterX) ** 2 + (click.clientY - targetCenterY) ** 2,
-  );
-  let score: number =
-    maxPointsPerShot - Math.floor((distance * maxPointsPerShot) / radius);
-};
-
 const Target = ({ x, y, size }: TargetProps) => {
+  const dispatch = useDispatch();
+
+  const shot = ({ click, x, y, size }: ShotProps) => {
+    const radius: number = size / 2;
+    const targetCenterX: number = x + radius;
+    const targetCenterY: number = y + radius;
+    const distance: number = Math.sqrt(
+      (click.clientX - targetCenterX) ** 2 + (click.clientY - targetCenterY) ** 2,
+    );
+    let score: number =
+      maxPointsPerShot - Math.floor((distance * maxPointsPerShot) / radius);
+    dispatch(increment(score));
+  };
+
   return (
     <div
       className="target"
