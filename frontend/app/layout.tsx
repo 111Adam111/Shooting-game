@@ -1,8 +1,7 @@
-import "./globals.css";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Shooting game frontend",
+  title: "Shooting game",
   description: "New frontend with menu and highscore table",
 };
 
