@@ -9,19 +9,18 @@ const initialState: ScoreState = {
 };
 
 export const scoreSlice = createSlice({
-  name: 'score',
+  name: "score",
   initialState,
   reducers: {
     increment: (state, action: PayloadAction<number>) => {
       state.count += action.payload;
     },
     reset: (state) => {
-        state.count = 0;
-    }
+      state.count = 0;
+    },
   },
 });
 
-
-export const {increment, reset} = scoreSlice.actions;
+export const { increment, reset } = scoreSlice.actions;
 
 export default scoreSlice.reducer;
