@@ -1,8 +1,9 @@
 import React from "react";
+import styles from "./styles.module.scss";
 import { maxPointsPerShot } from "../gameSettings";
 import { useDispatch } from "react-redux";
 import { increment } from "../../redux/slices/scoreSlice";
-import { remove } from "../../redux/slices/targetsSlice";
+import { addTarget, removeTarget } from "../../redux/slices/targetsSlice";
 
 interface ShotProps extends TargetProps {
   click: React.MouseEvent<HTMLElement>;
@@ -28,15 +29,16 @@ const Target = ({ x, y, size }: TargetProps) => {
       maxPointsPerShot - Math.floor((distance * maxPointsPerShot) / radius);
     if (score > 0) {
       dispatch(increment(score));
-      dispatch(remove({ x, y, size }));
+      dispatch(removeTarget({ x, y, size }));
+      dispatch(addTarget());
     }
   };
 
   return (
     <div
-      className="target"
-      onClick={(click) => shot({ click, x, y, size })}
-      style={{ left: `${y}px`, top: `${x}px`, width: `${size}px`, height: `${size}px` }}
+      className={styles.target}
+      onMouseDown={(click) => shot({ click, x, y, size })}
+      style={{ left: `${x}px`, top: `${y}px`, width: `${size}px`, height: `${size}px` }}
     />
   );
 };
