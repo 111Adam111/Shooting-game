@@ -9,7 +9,7 @@ export const scoreSlice = createSlice({
     increment: (state: number, action: PayloadAction<number>) => {
       return state + action.payload;
     },
-    reset: (state) => {
+    reset: () => {
       return 0;
     },
   },

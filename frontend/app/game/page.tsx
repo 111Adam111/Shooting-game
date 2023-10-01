@@ -2,7 +2,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Target from "./target/Target";
-// import { ScoreState, TargetsState } from "../redux/types";
 import { restartTargets } from "../redux/slices/targetsSlice";
 import { ScoreState, TargetsState } from "../redux/types";
 

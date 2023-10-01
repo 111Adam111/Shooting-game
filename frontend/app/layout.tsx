@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 import { Provider } from "react-redux";
 import { store } from "./redux/store";
 
-const metadata: Metadata = {
+export const metadata: Metadata = {
   title: "Shooting game",
   description: "New frontend with menu and highscore table",
 };
