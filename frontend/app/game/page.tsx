@@ -1,14 +1,15 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import Target from "./target/Target";
+import Target, { TargetProps } from "./target/Target";
 import { restartTargets } from "../redux/slices/targetsSlice";
 import { ScoreState, TargetsState } from "../redux/types";
+import Link from "next/link";
 
 const Game = () => {
   const [isRunning, setIsRunning] = useState(true);
   const [countDown, setCountDown] = useState(3);
-  const targets = useSelector((state: TargetsState) => state.targets);
+  const targets: TargetProps[] = useSelector((state: TargetsState) => state.targets);
   const score : number = useSelector((state: ScoreState) => state.score);
   const dispatch = useDispatch();
 
@@ -31,6 +32,7 @@ const Game = () => {
     <div>
       {countDown.toFixed(2)}
       <div>{score}</div>
+      <Link href="/">menu</Link>
       {targets.map((target) => (
         <Target key={Math.random() * 10000} {...target} />
       ))}

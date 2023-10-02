@@ -1,8 +1,6 @@
-"use client"
-import './styles.scss'
+import "./styles.scss";
 import type { Metadata } from "next";
-import { Provider } from "react-redux";
-import { store } from "./redux/store";
+import ProviderWrapper from "./redux/ProviderWrapper";
 
 export const metadata: Metadata = {
   title: "Shooting game",
@@ -12,8 +10,10 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className='background'>
-        <Provider store={store}>{children}</Provider>
+      <body>
+        <div className="background">
+          <ProviderWrapper>{children}</ProviderWrapper>
+        </div>
       </body>
     </html>
   );
