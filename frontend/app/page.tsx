@@ -8,7 +8,6 @@ export default function Home() {
       <CowboyBoardWrapper>
         <div className="menu-container">
           <div className="menu">
-            <div className="menu-banner"></div>
             <div>
               <Link className="link" href="/game">
                 PLAY
