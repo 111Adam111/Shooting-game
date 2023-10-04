@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { TargetProps } from "../../game/target/Target";
+import { TargetProps } from "../../components/target/Target";
 import { targetsAmount } from "../../game/gameSettings";
 
 const newTarget = (): TargetProps => {

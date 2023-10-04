@@ -1,4 +1,4 @@
-import { TargetProps } from "../game/target/Target";
+import { TargetProps } from "../components/target/Target";
 
 export interface ScoreState {
   score: number;

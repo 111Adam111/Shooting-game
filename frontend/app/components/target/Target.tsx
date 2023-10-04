@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./styles.module.scss";
-import { maxPointsPerShot } from "../gameSettings";
+import { maxPointsPerShot } from "../../game/gameSettings";
 import { useDispatch } from "react-redux";
 import { increment } from "../../redux/slices/scoreSlice";
 import { addTarget, removeTarget } from "../../redux/slices/targetsSlice";

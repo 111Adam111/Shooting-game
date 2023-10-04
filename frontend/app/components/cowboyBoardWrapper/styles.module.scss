@@ -1,0 +1,58 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cowboy {
+  background-image: url("../../../public/cowboy-board.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: right;
+  height: 90vh;
+  width: 95vh;
+  position: relative;
+  margin-top: 5vh;
+}
+
+.board {
+  position: absolute;
+  right: 9%;
+  top: 23%;
+  width: 47vh;
+  height: 60%;
+}
+
+@media screen and (max-width: 1140px) and (min-width: 641px) {
+  .cowboy {
+    background-position-x: 90%;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .board {
+    right: 8%;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .cowboy {
+    background-position-x: 87%;
+  }
+}
+
+@media screen and (max-width: 380px) {
+  .cowboy {
+    background-position-x: 84%;
+  }
+  .board {
+    width: 100vw;
+    right: 0;
+  }
+}
+
+@media screen and (max-width: 310px) {
+  .cowboy {
+    background-position-x: 80%;
+  }
+}
