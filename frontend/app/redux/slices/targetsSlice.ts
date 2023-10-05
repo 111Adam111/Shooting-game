@@ -35,12 +35,16 @@ export const targetsSlice = createSlice({
         (target) => target.x !== action.payload.x && target.y !== action.payload.y,
       );
     },
-    restartTargets: () => {
+    clearTargets: () => {
+      return [];
+    },
+    resetTargets: () => {
       return createStartingTargets(targetsAmount);
     },
   },
 });
 
-export const { addTarget, removeTarget, restartTargets } = targetsSlice.actions;
+export const { addTarget, removeTarget, resetTargets, clearTargets } =
+  targetsSlice.actions;
 
 export default targetsSlice.reducer;

@@ -1,20 +1,24 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { ScoreState } from "../types";
 
-const initialState: number = 0;
+const initialState: ScoreState = {
+  score: 0,
+  shots: 0,
+};
 
 export const scoreSlice = createSlice({
   name: "score",
   initialState,
   reducers: {
-    increment: (state: number, action: PayloadAction<number>) => {
-      return state + action.payload;
+    incrementScore: (state: ScoreState, action: PayloadAction<number>) => {
+      return { score: state.score + action.payload, shots: state.shots + 1 };
     },
-    reset: () => {
-      return 0;
+    resetScore: () => {
+      return { score: 0, shots: 0 };
     },
   },
 });
 
-export const { increment, reset } = scoreSlice.actions;
+export const { incrementScore, resetScore } = scoreSlice.actions;
 
 export default scoreSlice.reducer;

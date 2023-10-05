@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./styles.module.scss";
 import { maxPointsPerShot } from "../../game/gameSettings";
 import { useDispatch } from "react-redux";
-import { increment } from "../../redux/slices/scoreSlice";
+import { incrementScore } from "../../redux/slices/scoreSlice";
 import { addTarget, removeTarget } from "../../redux/slices/targetsSlice";
 
 interface ShotProps extends TargetProps {
@@ -28,7 +28,7 @@ const Target = ({ x, y, size }: TargetProps) => {
     let score: number =
       maxPointsPerShot - Math.floor((distance * maxPointsPerShot) / radius);
     if (score > 0) {
-      dispatch(increment(score));
+      dispatch(incrementScore(score));
       dispatch(removeTarget({ x, y, size }));
       dispatch(addTarget());
     }
