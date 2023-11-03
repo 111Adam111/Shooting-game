@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: customFont;
 }
 
 @font-face {
@@ -16,6 +17,7 @@ body {
 .background {
   background-image: url(./../public/background.svg);
   background-size: cover;
+  cursor: crosshair;
   background-position: center;
   background-repeat: no-repeat;
   height: 100vh;
@@ -36,13 +38,12 @@ body {
   align-items: center;
   gap: 3vh;
   font-size: 6vh;
-  color: brown;
   letter-spacing: 0.05em;
 }
 
 .link {
+  color: brown;
   text-decoration: none;
-  color: inherit;
   font-family: customFont;
   &:hover {
     color: rgb(255, 0, 0);

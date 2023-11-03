@@ -4,9 +4,10 @@ import { useDispatch, useSelector } from "react-redux";
 import Target, { TargetProps } from "../components/target/Target";
 import { clearTargets, resetTargets } from "../redux/slices/targetsSlice";
 import { ScoreState, TargetsState } from "../redux/types";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { resetScore } from "../redux/slices/scoreSlice";
+import styles from "./styles.module.scss";
+
 
 const Game = () => {
   const dispatch = useDispatch();
@@ -41,10 +42,10 @@ const Game = () => {
 
   return (
     <div>
-      {parseFloat(countDown.toFixed(1)) <= 0 ? "0" : countDown.toFixed(1)}
-      <div>{score}</div>
-      <div>{shots}</div>
-      <Link href="/">menu</Link>
+      <div className={styles.stats}>
+        <div>{parseFloat(countDown.toFixed(1)) <= 0 ? "0" : countDown.toFixed(1)}</div>
+        <div>{score}</div>
+      </div>
       {targets.map((target) => (
         <Target key={Math.random() * 10000} {...target} />
       ))}
